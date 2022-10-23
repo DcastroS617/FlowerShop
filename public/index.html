@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <h3>FlowerShop Admin</h3>
+    <div class="navigationbar">
+        <ul>
+            <li><a>Flower Shop</a></li>
+            <li><a href="./sales.html">Sales</a></li>
+            <li><a href="./login.html">Log out</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="listflowers">
+            <div class="addbutton">
+                <button value="add" class="actionbutton">Añadir planta</button>
+            </div>
+            <table class="flowers">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Colour</th>
+                        <th>Family</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="flowerbody"></tbody>
+            </table>
+        </div>
+        <div class="flowerform hiddenclass">
+            <div class="formtitle">
+                <h3></h3>
+            </div>
+            <div class="inputgroup">
+                <label for="flowername">Nombre cientifico de la flor.</label>
+                <input type="text" id="flowername" placeholder="nombre de la flor">
+            </div>
+            <div class="inputgroup">
+                <label for="flowerfamily">Nombre cientifico de la familia de la flor.</label>
+                <input type="text" id="flowerfamily" placeholder="nombre de la familia">
+            </div>
+            <div class="inputgroup">
+                <label for="flowercolour">Color de la flor.</label>
+                <input type="text" id="flowercolour" placeholder="nombre del color">
+            </div>
+            <div class="buttongroup">
+                <button class="button" onclick="HideForm()">Cancelar</button>
+                <button class="button" id="transferencebutton">Aceptar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

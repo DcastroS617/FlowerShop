@@ -1,0 +1,32 @@
+body, button, label, input{
+    font-family: 'Nunito';
+    font-size: 20px;
+}
+
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    vertical-align:bottom;
+}
+
+.container img{
+    border-radius: 5px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.loginform{
+    position: relative;
+    justify-content: space-evenly;
+    margin-inline: 5rem;
+}
+
+.inputgroup{
+    display: grid;
+    position: relative;
+    object-fit: cover;
+}
+
+.buttongroup{
+    text-align: right;
+}
