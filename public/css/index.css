@@ -13,7 +13,7 @@ button{
     width: auto;
     border: 1px solid rgb(216, 177, 255);;
     border-radius: 2px;
-    padding: 0.2rem;
+    padding-inline: 0.3rem;
     transition: 0.3s;
 }
 
@@ -23,7 +23,7 @@ button:hover{
     width: auto;
     border: 1px solid rgb(216, 177, 255);
     border-radius: 2px;
-    padding: 0.2rem;
+    padding-inline: 0.3rem;
 }
 
 

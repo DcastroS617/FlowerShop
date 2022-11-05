@@ -71,7 +71,7 @@ const CreateFlower = async () => {
         FamilyName: familyDOM.value,
         FlowerName: nameDOM.value
     }
-    const { data } = await axios.post('/api/flowers', body, {
+    await axios.post('/api/flowers', body, {
         "Content-Type": "application/json",
         "Accept": "application/json"
     })
@@ -87,7 +87,7 @@ const EditFlower = async (index) => {
         FamilyName: familyDOM.value,
         FlowerName: nameDOM.value
     }
-    const { data } = await axios.put(`/api/flowers/${flower.FlowerID}`, body, {
+    await axios.put(`/api/flowers/${flower.FlowerID}`, body, {
         'Accept': 'application/json',
         'Content-type': 'applicaton/json'
     })
