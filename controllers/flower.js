@@ -12,13 +12,7 @@ const GetFlowers = async (req, res) => {
 const CreateFlower = async (req, res) => {
     const {body: {FlowerName, ColourName, FamilyName}} = req
     if(!ColourName || !FlowerName || !FamilyName) throw new BadRequestError()
-    const body = {
-        FlowerID: GenerateID(),
-        ColourName,
-        FamilyName,
-        FlowerName,
-    }
-    const flower = await FlowerModel.create(body)
+    const flower = await FlowerModel.create(req.body)
     return res.status(StatusCodes.CREATED).json({flower})
 }
 

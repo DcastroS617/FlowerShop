@@ -1,16 +1,16 @@
 const db = require('../db/sequelize')
-const {DataTypes, STRING} = require('sequelize')
+const {STRING} = require('sequelize')
 const GenerateID = require('../utils/GenerateID')
 
 const FlowerModel = db.define('flower', {
     FlowerID: {
-        type: DataTypes.STRING(8),
+        type: STRING(8),
         allowNull: false,
         primaryKey: true,
         unique: true
     },
     ColourName: {
-        type: DataTypes.STRING,
+        type: STRING,
         allowNull: false,
     },
     FamilyName: {
@@ -21,6 +21,12 @@ const FlowerModel = db.define('flower', {
         type: STRING,
         allowNull: false,
         unique: true,       
+    }
+}, {
+    hooks: {
+        beforeValidate: (model, opt) => {
+            model.FlowerID = GenerateID()
+        }
     }
 })
 
