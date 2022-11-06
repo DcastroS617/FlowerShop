@@ -64,6 +64,12 @@ button:hover{
     margin-right: 1rem;
 }
 
+.addnewbutton{
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+
 .listflowers{
     display: flex;
     justify-content: center;

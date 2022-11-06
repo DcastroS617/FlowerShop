@@ -29,7 +29,7 @@ const port = process.env.PORT || 9923
 
 const start = async () => {
     try {
-        await db.sync({force: true})
+        await db.sync({alter: true})
         app.listen(port, () => console.log(`app listening on port ${port}`))
     } catch (error) {
         console.log(error)

@@ -24,6 +24,7 @@ const ShowFlowers = async () => {
         $(".flowers > tbody").append(fila)
         FlowerList.push(item)
     })
+    if (FlowerList.length === 0) { HideFlowersTable() }
 }
 
 const ShowHiddenForm = () => {
@@ -39,6 +40,27 @@ const HideForm = () => {
     colourDOM.value = ''
 }
 
+const HideFlowersTable = () => {
+    const hidediv = document.querySelector('.flowers')
+    const listdiv = document.querySelector('.listflowers')
+    const buttondiv = document.getElementById('addbutton')
+    const tag = document.createElement('h4')
+    const message = document.createTextNode('No hay flores disponibles, debes añadirlas al inventario!')
+    tag.appendChild(message)
+    tag.classList.add("addnewbutton")
+    listdiv.appendChild(tag)
+    hidediv.setAttribute('hidden', 'true')
+    buttondiv.classList.replace('addbutton', 'addnewbutton')
+}
+
+const ShowFlowersTable = async () => {
+    const hidediv = document.querySelector('.flowers')
+    const listdiv = document.querySelector('.listflowers')
+    listdiv.innerHTML = ""
+    hidediv.innerHTML = ""
+    await ShowFlowers()
+}
+
 const AddActionEvent = () => {
     setTimeout(() => {
         //extenso for que toma cada uno de los eventos con el classname 'actionbutton', esto
@@ -52,9 +74,9 @@ const AddActionEvent = () => {
                     transferenceButtonDOM.addEventListener('click', async () => await CreateFlower())
                     ShowHiddenForm()
                 })
-            } 
-            if(!isNaN(actionButtonDOM[i].value)){
-                actionButtonDOM[i].addEventListener('click', function(e) {
+            }
+            if (!isNaN(actionButtonDOM[i].value)) {
+                actionButtonDOM[i].addEventListener('click', function (e) {
                     formTitleDOM.innerHTML = 'Editar la planta!'
                     transferenceButtonDOM.addEventListener('click', async () => await EditFlower(e.target.value))
                     ShowHiddenForm()
@@ -71,13 +93,23 @@ const CreateFlower = async () => {
         FamilyName: familyDOM.value,
         FlowerName: nameDOM.value
     }
-    await axios.post('/api/flowers', body, {
+    /*const { data } = await axios.post('/api/flowers', body, {
         "Content-Type": "application/json",
         "Accept": "application/json"
+    })*/
+    const Response = await fetch('/api/flowers', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(body)
     })
+    console.log(Response)
     HideForm()
     await ShowFlowers()
     AddActionEvent()
+
 }
 
 const EditFlower = async (index) => {
@@ -91,7 +123,7 @@ const EditFlower = async (index) => {
         'Accept': 'application/json',
         'Content-type': 'applicaton/json'
     })
-    
+
     HideForm()
     await ShowFlowers()
     AddActionEvent()
@@ -104,8 +136,12 @@ const DeleteFlower = async (index) => {
     AddActionEvent()
 }
 /*END CRUD ACTIONS. */
+const IndexMain = async () => {
+    await ShowFlowers()
+    AddActionEvent()
+}
 
-ShowFlowers()
-AddActionEvent()
+IndexMain()
+
 
 

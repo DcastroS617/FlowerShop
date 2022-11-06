@@ -24,6 +24,19 @@ body, button, label, input{
     border-radius: 10px;
 }
 
+.registerform{
+    position: relative;
+    justify-content: center;
+    background-color: rgb(245,245,245);
+    border-radius: 10px;
+    margin-left: 25rem;
+    margin-right: 25rem;
+}
+
+.registerform > .registertitle{
+    text-align: center;
+}
+
 .inputgroup{
     display: grid;
     position: relative;

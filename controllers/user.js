@@ -19,7 +19,7 @@ const Register = async (req, res) => {
 
 const LogIn = async (req, res) => {
     const { body: { username, password } } = req
-    if (!username || !password) throw BadRequestError('Debe introducir sus datos de usuario para iniciar sesion')
+    if (!username || !password) throw new BadRequestError('Debe introducir sus datos de usuario para iniciar sesion')
     const user = await UserModel.findOne({ where: { Username: username } })
     if (!user) throw new NotFoundError("El usuario no se encuentra registrado")
     const pass = await bcryptjs.compare(password, user.Password)
@@ -36,8 +36,9 @@ const LogOut = async (req, res) => {
     return res.status(StatusCodes.OK).json({msg: 'Sesión finalizada con éxito.'})
 }
 
-const GetUserByID = async (req, res) => {
-
+const GetUsers = async (req, res) => {
+    const users = await UserModel.findAll()
+    return res.status(StatusCodes.OK).json({users})
 }
 
 const DeleteUser = async (req, res) => {
@@ -47,5 +48,6 @@ const DeleteUser = async (req, res) => {
 module.exports = {
     LogIn,
     Register,
-    LogOut
+    LogOut,
+    GetUsers
 }
