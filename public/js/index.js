@@ -93,19 +93,11 @@ const CreateFlower = async () => {
         FamilyName: familyDOM.value,
         FlowerName: nameDOM.value
     }
-    /*const { data } = await axios.post('/api/flowers', body, {
+    const { data } = await axios.post('/api/flowers', body, {
         "Content-Type": "application/json",
         "Accept": "application/json"
-    })*/
-    const Response = await fetch('/api/flowers', {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify(body)
     })
-    console.log(Response)
+    console.log(data)
     HideForm()
     await ShowFlowers()
     AddActionEvent()

@@ -97,12 +97,12 @@ button:hover{
 }
 
 .showclass{
-    display: grid;
+    display:block;
     transition: 2s;
 }
 
 .flowerform{
-    /*display: grid;*/
+    /*display: block;*/
     position: relative;
     justify-content: space-evenly;
     top: 3rem;

@@ -26,32 +26,31 @@
                 <input type="password" placeholder="password" id="password">
             </div>
             <div class="buttongroup">
-                <button>Register</button>
-                <button onclick="LoginUser()">Log in</button>
+                <button onclick="ShowRegisterForm()">Register</button>
+                <button id="loginbutton">Log in</button>
             </div>
         </div>
     </div>
-    <div class="registerform">
-        <div class="registertitle">
-            <h4>Regístrate</h4>
+    <div class="registerform  hiddenclass">
+        <h4 style="text-align: center;">Register</h4>
+        <div class="inputgroup">
+            <label for="">Email</label>
+            <input type="text" placeholder="Email" id="newemail">
         </div>
         <div class="inputgroup">
-             <label for="">Email</label>
-             <input type="text" placeholder="Email" id="newemail"> 
+            <label for="">Username</label>
+            <input type="text" placeholder="Username" id="newusername">
         </div>
         <div class="inputgroup">
-             <label for="">Username</label>
-             <input type="text" placeholder="Nombre de usuario" id="newusername">
-        </div>
-        <div class="inputgroup">
-             <label for="">Password</label>
-             <input type="password" placeholder="Contraseña" id="newpassword"> 
+            <label for="">Password</label>
+            <input type="password" placeholder="Password" id="newpassword">
         </div>
         <div class="buttongroup">
-            <button>Cancelar</button>
-            <button onclick="RegisterUser()">Aceptar</button>
+            <button onclick="HideRegisterForm()">Cancelar</button>
+            <button id="registerbutton">Aceptar</button>
         </div>
     </div>
+    
     <script src="./js/login.js"></script>
 </body>
 

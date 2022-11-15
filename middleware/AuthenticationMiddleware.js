@@ -6,8 +6,9 @@ const AuthMiddleware = async (req, res, next) => {
     const token = req.signedCookies.token
     if(!token) throw UnauthenticatedError('Debes iniciar sesion para continuar...')
     try {
-        const {Name, UserID, Email} = IsTokenValid({token})
-        req.user = {Name, UserID, Email}
+        const {Username, UserID, Email} = IsTokenValid({token})
+        req.user = {Username, UserID, Email}
+        console.log(req.user)
         next()
     } catch (error) {
         throw new UnauthenticatedError('indentidad invalidad, debes iniciar sesion para continuar...')

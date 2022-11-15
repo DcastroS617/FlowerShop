@@ -7,34 +7,33 @@ body, button, label, input{
     display: flex;
     justify-content: space-evenly;
     vertical-align:bottom;
+    margin: 1rem;
+    padding: 0.5rem;
 }
 
 .container img{
     border-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    position: relative;
 }
 
 .loginform{
     position: relative;
     justify-content: space-evenly;
-    margin-inline: 5rem;
     background-color: rgb(245, 245, 245);
     padding: 2rem;
     border-radius: 10px;
 }
 
 .registerform{
-    position: relative;
+    position:relative;
     justify-content: center;
+    align-content: center;
     background-color: rgb(245,245,245);
     border-radius: 10px;
-    margin-left: 25rem;
-    margin-right: 25rem;
-}
-
-.registerform > .registertitle{
-    text-align: center;
+    margin: auto;
+    padding: 1rem;
+    width: 25rem;
+    /*display: inline-block; /*Hace que el div sea del tamaño del contenido*/
 }
 
 .inputgroup{
@@ -65,4 +64,14 @@ button:hover{
     border: 1px solid rgb(216, 177, 255);
     border-radius: 2px;
     padding: 0.2rem;
+}
+
+.hiddenclass{
+    display: none;
+    transition: 2s;
+}
+
+.showclass{
+    display:block;
+    transition: 2s;
 }

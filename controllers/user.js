@@ -4,8 +4,7 @@ const BadRequestError = require('../error/BadRequestError')
 const UserModel = require("../models/User")
 const { StatusCodes } = require("http-status-codes")
 const bcryptjs = require("bcryptjs")
-const jwt = require('jsonwebtoken')
-const { CreateToken, AttachCookiesToResponse } = require('../utils/Cookies')
+const { AttachCookiesToResponse } = require('../utils/Cookies')
 
 const Register = async (req, res) => {
     const { body: { Username, Email, Password } } = req
