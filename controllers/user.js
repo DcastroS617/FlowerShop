@@ -12,6 +12,9 @@ const Register = async (req, res) => {
     if (!Username || !Email || !Password) throw new BadRequestError('Debe introducir sus datos para crear su usuario')
     const emailExists = await UserModel.findOne({where: {Email: Email}})
     if(emailExists) throw new BadRequestError('El email ya se encuentra registrado')
+    const isFirstAccount = await UserModel.count() === 0
+    const role = isFirstAccount ? 'admin' : 'user'
+    req.body.Role = role
     const user = await UserModel.create(req.body)
     const token = await AttachCookiesToResponse({res}, user)
     return res.status(StatusCodes.CREATED).json({ msg: `welcome ${user.Username}`, token })
@@ -25,7 +28,7 @@ const LogIn = async (req, res) => {
     const pass = await bcryptjs.compare(password, user.Password)
     if (!pass) throw new UnauthenticatedError("La contraseña es incorrecta")
     const token = await AttachCookiesToResponse({ res }, user)
-    return res.status(StatusCodes.OK).json({ msg: `welcome ${user.Username}`, token })
+    return res.status(StatusCodes.OK).json({ msg: `welcome ${user.Username}`, token, UserID: user.UserID })
 }
 
 const LogOut = async (req, res) => {
