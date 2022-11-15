@@ -44,6 +44,9 @@ const RegisterUser = async () => {
         "Content-Type": "application/json",
         "Accept": "application/json"
     })
+    
+    console.log(data)
+    window.location.assign('index.html')
 }
 
 const LoginUser = async () => {
@@ -81,3 +84,6 @@ const LoginMain = () => {
 }
 
 LoginMain()
+    window.location.assign('index.html')
+    console.log(data)
+

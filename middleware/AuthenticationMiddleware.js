@@ -1,19 +1,27 @@
-const jwt = require('jsonwebtoken')
 const UnauthenticatedError = require('../error/UnauthenticatedError')
 const { IsTokenValid } = require('../utils/Cookies')
 
 const AuthMiddleware = async (req, res, next) => {
     const token = req.signedCookies.token
-    if(!token) throw UnauthenticatedError('Debes iniciar sesion para continuar...')
+    if(!token) throw new UnauthenticatedError('Debes iniciar sesion para continuar...')
     try {
-        const {Username, UserID, Email} = IsTokenValid({token})
-        req.user = {Username, UserID, Email}
-        console.log(req.user)
+        const {Username, UserID, Role} = IsTokenValid({token})
+        req.user = {Username, UserID, Role}
         next()
     } catch (error) {
         throw new UnauthenticatedError('indentidad invalidad, debes iniciar sesion para continuar...')
     }
 }
+
+const AuthorizePermission = (...roles) => {
+    return (req, res, next) =>{
+        if(!roles.includes(req.user.Role)){
+            throw new UnauthenticatedError('No tienes acceso a esta área')
+        }
+        next()
+    }
+}
+
 /*
 RIP THE OLD WAY TwT
 const AuthMiddleware = async (req, res, next) => {
@@ -29,4 +37,4 @@ const AuthMiddleware = async (req, res, next) => {
     }
 }*/
 
-module.exports = AuthMiddleware
+module.exports = {AuthMiddleware, AuthorizePermission}

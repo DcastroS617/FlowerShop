@@ -38,6 +38,13 @@ const UserModel = db.define('user', {
             },
             notEmpty: true,
         }
+    },
+    Role: {
+        type: STRING,
+        allowNull: false,
+        validate: {
+            isIn: [['admin', 'user']]
+        }
     }
 }, {
     hooks: {

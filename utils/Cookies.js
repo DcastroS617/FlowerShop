@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken')
+const UnauthenticatedError = require('../error/UnauthenticatedError')
 
 const CreateToken = (user) => {
     const token = jwt.sign(
-        { UserID: user.UserID, Username: user.Username, Email: user.Email },
+        { UserID: user.UserID, Username: user.Username, Role: user.Role },
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRE })
     return token
@@ -22,7 +23,13 @@ const AttachCookiesToResponse = async ({res}, user) => {
     return token
 }
 
+const CheckPermission = (requestUser, resourceUserID) => {
+    console.log(requestUser)
+    console.log(resourceUserID)
+}
+
 module.exports = {
     AttachCookiesToResponse,
-    IsTokenValid
+    IsTokenValid,
+    CheckPermission
 }
